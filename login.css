@@ -1,0 +1,239 @@
+:root {
+    --preto: #111111;
+    --cinza-escuro: #1e1e1e;
+    --vermelho: #e60000;
+    --vermelho-hover: #b80000;
+    --branco: #ffffff;
+    --cinza-claro: #f4f4f4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--preto);
+    color: var(--branco);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background-color: var(--cinza-escuro);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 3px solid var(--vermelho);
+}
+
+.logo {
+    color: var(--branco);
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--vermelho);
+}
+
+.logo {
+    color: var(--branco);
+    font-size: 1.6rem;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--vermelho);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.ativo {
+    color: var(--vermelho);
+    border-bottom-color: var(--vermelho);
+}
+
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--branco);
+    color: var(--preto);
+    width: 100%;
+    max-width: 800px;
+    padding: 8rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+}
+
+.abas {
+    display: flex;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.aba {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #777;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.aba.ativa {
+    color: var(--vermelho);
+    border-bottom: 3px solid var(--vermelho);
+    margin-bottom: -2px;
+}
+
+.campo {
+    margin-bottom: 1.2rem;
+}
+
+.campo label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--preto);
+}
+
+.campo input {
+    width: 100%;
+    padding: 28px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+.campo input:focus {
+    border-color: var(--vermelho);
+}
+
+.btn {
+    padding: 20px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.full {
+    width: 100%;
+}
+
+.btn-vermelho {
+    background-color: var(--vermelho);
+    color: var(--branco);
+}
+
+.btn-vermelho:hover {
+    background-color: var(--vermelho-hover);
+}
+
+.btn-preto {
+    background-color: var(--preto);
+    color: var(--branco);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--vermelho);
+    color: var(--vermelho);
+}
+
+.btn-outline:hover {
+    background-color: var(--vermelho);
+    color: var(--branco);
+}
+
+.feedback {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.feedback.erro {
+    background-color: #ffe5e5;
+    color: var(--vermelho);
+    border: 1px solid var(--vermelho);
+}
+
+.feedback.sucesso {
+    background-color: #e5ffe7;
+    color: #007a14;
+    border: 1px solid #007a14;
+}
+
+#painel-logado h2 {
+    margin-bottom: 10px;
+    color: var(--preto);
+}
+
+#painel-logado h2 span {
+    color: var(--vermelho);
+}
+
+.info-email {
+    margin: 15px 0;
+    padding: 10px;
+    background: var(--cinza-claro);
+    border-left: 4px solid var(--vermelho);
+    font-size: 0.9rem;
+}
+
+.acoes-logado {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.oculto {
+    display: none !important;
+}

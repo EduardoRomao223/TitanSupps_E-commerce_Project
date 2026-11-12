@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso - Titan Suplementos</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">TITAN<span>SUPPS</span></a>
+        
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="login.html" id="nav-usuario" class="ativo">Login / Cadastro</a>
+        </nav>
+    </header>
+    <main class="container">
+
+        <section id="painel-logado" class="card oculto">
+            <h2>Bem-vindo, <span id="nome-usuario-logado">Atleta</span>!</h2>
+            <p>Você já está autenticado no sistema.</p>
+            <p class="info-email">E-mail: <strong id="email-usuario-logado"></strong></p>
+            
+            <div class="acoes-logado">
+                <a href="index.html" class="btn btn-vermelho">Ir às Compras</a>
+                <button id="btn-sair" class="btn btn-preto">Sair (Logout)</button>
+                <button id="btn-excluir-conta" class="btn btn-outline">Excluir Minha Conta</button>
+            </div>
+        </section>
+    
+        <section id="area-formularios" class="card">
+        
+            <div class="abas">
+                <button id="aba-login" class="aba ativa">Entrar</button>
+                <button id="aba-cadastro" class="aba">Criar Conta</button>
+            </div>
+
+            <div id="mensagem-feedback" class="feedback oculto"></div>
+
+            <form id="form-login">
+                <div class="campo">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" placeholder="seu@email.com" required>
+                </div>
+                <div class="campo">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-vermelho full">Entrar na Conta</button>
+            </form>
+
+            <form id="form-cadastro" class="oculto">
+                <div class="campo">
+                    <label for="cad-nome">Nome Completo</label>
+                    <input type="text" id="cad-nome" placeholder="Ex: João Silva" required>
+                </div>
+                <div class="campo">
+                    <label for="cad-email">E-mail</label>
+                    <input type="email" id="cad-email" placeholder="seu@email.com" required>
+                </div>
+                <div class="campo">
+                    <label for="cad-senha">Senha (mín. 4 caracteres)</label>
+                    <input type="password" id="cad-senha" minlength="4" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-vermelho full">Finalizar Cadastro</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>
