@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto - Titan Suplementos</title>
+    <link rel="stylesheet" href="descricao.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <a href="index.html" class="logo">TITAN<span>SUPPS</span></a>
+        
+        <nav class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="produtos.html" class="ativo">Produtos</a>
+            <a href="carrinho.html">Carrinho (<span id="contador-carrinho">0</span>)</a>
+            <a href="login.html" id="nav-usuario">Login / Cadastro</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="area-produto" class="card card-produto">
+            <div class="produto-grid">
+                
+                <div class="produto-imagem-box">
+                    <img id="prod-imagem" src="" alt="Imagem do suplemento">
+                </div>
+
+                <div class="produto-detalhes">
+                    <span id="prod-categoria" class="tag-categoria">Categoria</span>
+                    <h1 id="prod-nome">Carregando suplemento...</h1>
+                    <p id="prod-preco" class="preco-destaque">R$ 0,00</p>
+                    
+                    <p id="prod-descricao" class="texto-descricao"></p>
+
+                    <div class="box-modo-uso">
+                        <strong>Modo de uso:</strong>
+                        <p id="prod-uso"></p>
+                    </div>
+
+                    <div class="campo">
+                        <label for="select-sabor">Escolha o Sabor</label>
+                        <select id="select-sabor"></select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="prod-qtd">Quantidade</label>
+                        <input type="number" id="prod-qtd" value="1" min="1" max="10">
+                    </div>
+
+                    <div id="mensagem-feedback" class="feedback oculto"></div>
+
+                    <div class="acoes-produto">
+                        <button id="btn-adicionar" class="btn btn-vermelho full">Adicionar ao Carrinho</button>
+                        <a href="produtos.html" class="btn btn-outline full">Voltar para Produtos</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="descricao.js"></script>
+</body>
+</html>
