@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Titan Supps: catálogo demonstrativo de suplementos para sua rotina de treino.">
+  <title>Titan Supps — Suplementos para seu treino</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html" aria-label="Titan Supps início"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a>
+      <nav class="nav-links" aria-label="Menu principal"><a class="active" href="#inicio">Início</a><a href="#produtos">Produtos</a><a href="#sobre">Sobre</a></nav>
+      <a class="header-cart" href="carrinho.html">Carrinho <span id="cart-count">0</span></a>
+      <a class="login-link" href="login.html"><span id="account-label">Entrar</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="inicio">
+      <div class="hero-copy">
+        <p class="kicker"><span></span> SUA ROTINA. SEU RITMO.</p>
+        <h1>Treine forte.<br><em>Vá mais longe.</em></h1>
+        <p>Suplementos selecionados para acompanhar seus objetivos, dentro e fora da academia.</p>
+        <a class="button button-red" href="#produtos">Ver produtos <span>↗</span></a>
+        <div class="hero-note"><b>★★★★★</b> Escolhas para todos os treinos</div>
+      </div>
+      <div class="hero-image">
+        <span class="hero-circle circle-one"></span><span class="hero-circle circle-two"></span>
+        <div class="hero-label">TITAN<br><strong>FUEL YOUR<br>FOCUS</strong></div>
+        <img src="https://proteinproject.co/cdn/shop/files/WheyProteinIsolate_chocolate_2lb.png?v=1720122109" alt="Pote de whey protein sabor chocolate">
+        <div class="hero-product-label"><small>DESTAQUE</small><strong>Whey Isolate</strong><span>Chocolate · 900 g</span></div>
+      </div>
+    </section>
+
+    <section class="perks wrap" aria-label="Destaques da loja"><div><b>✦</b><span><strong>Boa seleção</strong><small>Produtos para sua rotina</small></span></div><div><b>↗</b><span><strong>Fácil de explorar</strong><small>Busca e filtros por categoria</small></span></div><div><b>◎</b><span><strong>Mais praticidade</strong><small>Encontre seus favoritos</small></span></div></section>
+
+    <section class="products-section wrap" id="produtos">
+      <div class="section-heading"><div><p class="kicker"><span></span> CATÁLOGO TITAN</p><h2>Encontre seu <em>favorito.</em></h2><p>Proteínas, creatina e outros essenciais para o treino.</p></div><a class="plain-link" href="#sobre">Sobre a Titan <span>↗</span></a></div>
+      <div class="catalog-tools"><label class="search"><span>⌕</span><input id="product-search" type="search" placeholder="Buscar produto..." aria-label="Buscar produtos"></label><div class="filters" id="category-filters" aria-label="Filtrar por categoria"></div></div>
+      <div class="product-grid" id="product-grid" aria-live="polite"><p class="loading">Carregando produtos...</p></div>
+      <p class="price-note">Preços ilustrativos para o projeto acadêmico. Consulte as fontes dos produtos nos cartões.</p>
+    </section>
+
+
+    <section class="about-section wrap" id="sobre"><div><p class="kicker"><span></span> SOBRE A TITAN</p><h2>Foco no que<br><em>move você.</em></h2></div><p>Um projeto demonstrativo de loja virtual de suplementos. O catálogo de produtos fica em um arquivo JSON e a página usa JavaScript para busca e filtros por categoria.</p></section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-row"><a class="brand" href="#inicio"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a><p>Projeto acadêmico • preços ilustrativos • imagens com links para as fontes</p><a href="login.html">Login / Cadastro</a></div></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
+
+
+
