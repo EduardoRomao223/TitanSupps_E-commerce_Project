@@ -1,0 +1,396 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #2b2b2b;
+    color: #fff;
+    min-height: 100vh;
+}
+
+header {
+    background: #111;
+    padding: 16px 5%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #e5352c;
+}
+
+.voltar {
+    font-size: 0.85rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.voltar:hover {
+    color: #e5352c;
+}
+
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #e5352c;
+}
+
+h1 #contador {
+    color: #fff;
+}
+
+/* Lista de produtos e resumo do pedido */
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+    align-items: start;
+}
+
+/* Caixa branca da lista e do resumo */
+.card {
+    background: #fff;
+    color: #111;
+    border: 1px solid #e4e1db;
+    border-radius: 8px;
+    box-shadow:  0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+
+.item {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 16px;
+    padding: 18px;
+    border-bottom: 1px solid #e4e1db;
+    align-items: center;
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+.foto {
+    width: 80px;
+    height: 80px;
+    background: #eceae5;
+    border-radius: 8px;
+    font-size: 2.4rem;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+/* Imagem do produto dentro da caixa da foto */
+.foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Categoria e preço por unidade */
+.item small,
+.preco-un {
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* Parte direita do item */
+.direita {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.subtotal-item {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+/* Controle de quantidade */
+.quantidade {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e4e1db;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.quantidade button {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: #f4f3ef;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.quantidade button:hover {
+    background: #e5352c;
+    color: #fff;
+}
+
+.quantidade span {
+    width: 36px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Botão remover */
+.remover {
+    background: none;
+    border: 0;
+    color: #e5352c;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.remover:hover {
+    text-decoration: underline;
+}
+
+.resumo {
+    padding: 22px;
+    position: sticky;
+    top: 20px;
+}
+
+.resumo h2 {
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e5352c;
+}
+
+/* Linhas do resumo */
+.linha {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+/* Desconto do cupom */
+.desconto {
+    color: #1e9e4a;
+    font-weight: 600;
+}
+
+/* Total do pedido */
+.total {
+    font-size: 1.4rem;
+    font-weight: 900;
+    border-top: 1px solid #e4e1db;
+    padding-top: 14px;
+    margin: 14px 0;
+}
+
+.total b {
+    color: #e5352c;
+}
+
+/* Aviso de frete grátis */
+.aviso-frete {
+    background: #f4f3ef;
+    border-radius: 6px;
+    padding: 10px;
+    font-size: 0.82rem;
+    margin: 12px 0;
+}
+
+/* Barra de progresso */
+.barra {
+    height: 6px;
+    background: #e4e1db;
+    border-radius: 3px;
+    margin-top: 6px;
+    overflow: hidden;
+}
+
+#progresso {
+    height: 100%;
+    background: #e5352c;
+    transition: 0.3s;
+}
+
+/* Campo e botão do cupom */
+.cupom {
+    display: flex;
+    gap: 6px;
+}
+
+.cupom input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #e4e1db;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.cupom input:focus {
+    outline: none;
+    border-color: #e5352c;
+}
+
+/* Mensagem do cupom */
+#msgCupom {
+    font-size: 0.8rem;
+    margin-top: 6px;
+    min-height: 1em;
+}
+
+#msgCupom.ok {
+    color: #1e9e4a;
+}
+
+#msgCupom.erro {
+    color: #e5352c;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border: 0;
+    border-radius: 4px;
+    background: #e5352c;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #c42a22;
+}
+
+/* Botão menor */
+.btn.pequeno {
+    width: auto;
+    padding: 0 16px;
+}
+
+/* Botão com contorno */
+.btn.contorno {
+    background: #fff;
+    color: #e5352c;
+    border: 2px solid #e5352c;
+    margin-top: 8px;
+}
+
+.btn.contorno:hover {
+    background: #e5352c;
+    color: #fff;
+}
+
+
+.vazio {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.vazio .icone {
+    font-size: 4rem;
+}
+
+.vazio p {
+    color: #666;
+    margin: 8px 0 18px;
+}
+
+.vazio .btn {
+    display: inline-block;
+    width: auto;
+    padding: 12px 24px;
+    margin: 4px;
+}
+
+/* Quando o carrinho está vazio */
+body.carrinho-vazio main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px);
+}
+
+body.carrinho-vazio .layout {
+    display: block;
+    width: 100%;
+    max-width: 560px;
+}
+
+body.carrinho-vazio h1 {
+    text-align: center;
+}
+
+.aviso {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #e5352c;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+}
+
+/* Telas até 850px */
+@media (max-width: 850px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .resumo {
+        position: static;
+    }
+}
+
+/* Telas até 520px */
+@media (max-width: 520px) {
+    .item {
+        grid-template-columns: 64px 1fr;
+    }
+
+    .foto {
+        width: 64px;
+        height: 64px;
+    }
+
+    .direita {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

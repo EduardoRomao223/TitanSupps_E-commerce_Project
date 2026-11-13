@@ -1,35 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111111">
-  <title>Carrinho — Titan Supps</title>
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/script.js" defer></script>
+  <title>Carrinho - TitanSupps</title>
+  <link rel="stylesheet" href="carrinho.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap header-row">
-      <a class="brand" href="/index.html" aria-label="Titan Supps início"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a>
-      <nav class="nav-links" aria-label="Menu principal"><a href="/index.html">Início</a><a href="/index.html">Produtos</a><a href="/index.html">Sobre</a></nav>
-      <a class="header-cart active" href="/pages/carrinho/carrinho.html" aria-current="page">Carrinho <span id="cart-count">0</span></a>
-      <a class="login-link" href="/pages/login/login.html"><span id="account-label">Entrar</span></a>
-    </div>
+
+  <header>
+    <a class="logo" href="/index.html">TITAN<span>SUPPS</span></a>
+    <a class="voltar" href="/index.html">Voltar para a Loja</a>
   </header>
-  <main class="cart-section cart-page">
-    <div class="wrap cart-wrap">
-      <div class="section-heading">
-        <div><p class="kicker"><span></span> SEU PEDIDO</p><h1>Seu <em>carrinho.</em></h1><p>Os produtos adicionados ficam salvos neste navegador.</p></div>
-        <a class="clear-button" href="/index.html">Continuar comprando</a>
-      </div>
-      <div class="cart-panel">
-        <div class="cart-items" id="cart-items" aria-live="polite"><p class="empty-cart">Carregando carrinho...</p></div>
-        <aside class="cart-total"><span>Produtos</span><strong id="cart-quantity">0 itens</strong><span>Total demonstrativo</span><strong id="cart-total">R$ 0,00</strong><a class="button button-dark" href="/pages/login/login.html">Continuar <span>↗</span></a></aside>
-      </div>
+
+  <main>
+    <h1>Meu <span>Carrinho</span> (<span id="contador">0</span> itens)</h1>
+
+    <div class="layout">
+
+      <!-- Lista de produtos -->
+      <section class="card" id="lista"></section>
+
+      <!-- Resumo do pedido -->
+      <aside class="card resumo" id="resumo">
+        <h2>Resumo do pedido</h2>
+
+        <div class="linha"><span>Subtotal</span><span id="subtotal"></span></div>
+        <div class="linha desconto" id="linhaDesconto">
+          <span>Cupom <b id="nomeCupom"></b></span><span id="valorDesconto"></span>
+        </div>
+        <div class="linha"><span>Frete</span><span id="frete"></span></div>
+
+        <div class="aviso-frete">
+          <span id="msgFrete"></span>
+          <div class="barra"><div id="progresso"></div></div>
+        </div>
+
+        <div class="cupom">
+          <input id="campoCupom" placeholder="Cupom (ex: TITAN10)">
+          <button class="btn pequeno" onclick="aplicarCupom()">Aplicar</button>
+        </div>
+        <p id="msgCupom"></p>
+
+        <div class="linha total"><span>Total</span><b id="total"></b></div>
+
+        <button class="btn" onclick="finalizar()">Finalizar compra</button>
+        <button class="btn contorno" onclick="esvaziar()">Esvaziar carrinho</button>
+      </aside>
+
     </div>
   </main>
-  <footer class="footer"><div class="wrap footer-row"><a class="brand" href="/index.html"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a><p>Projeto acadêmico • preços ilustrativos • imagens com links para as fontes</p><a href="/pages/login/login.html">Login / Cadastro</a></div></footer>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="carrinho.js"></script>
 </body>
 </html>
