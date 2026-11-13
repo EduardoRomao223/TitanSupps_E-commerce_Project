@@ -23,25 +23,31 @@
         <section id="area-produto" class="card card-produto">
             <div class="produto-grid">
                 
+                <!-- Imagem do Suplemento -->
                 <div class="produto-imagem-box">
                     <img id="prod-imagem" src="" alt="Imagem do suplemento">
                 </div>
 
+                <!-- Detalhes e Compra -->
                 <div class="produto-detalhes">
-                    <span id="prod-categoria" class="tag-categoria">Categoria</span>
-                    <h1 id="prod-nome">Carregando suplemento...</h1>
-                    <p id="prod-preco" class="preco-destaque">R$ 0,00</p>
-                    
-                    <p id="prod-descricao" class="texto-descricao"></p>
-
-                    <div class="box-modo-uso">
-                        <strong>Modo de uso:</strong>
-                        <p id="prod-uso"></p>
+                    <div class="tags-linha">
+                        <span id="prod-categoria" class="tag-categoria">Categoria</span>
+                        <span id="prod-tag" class="tag-destaque">Destaque</span>
                     </div>
 
-                    <div class="campo">
-                        <label for="select-sabor">Escolha o Sabor</label>
-                        <select id="select-sabor"></select>
+                    <p id="prod-marca" class="texto-marca">Marca • Tamanho</p>
+                    <h1 id="prod-nome">Carregando suplemento...</h1>
+                    
+                    <div class="bloco-precos">
+                        <span id="prod-preco-antigo" class="preco-antigo oculto">R$ 0,00</span>
+                        <p id="prod-preco" class="preco-destaque">R$ 0,00</p>
+                    </div>
+                    
+                    <p id="prod-resumo" class="texto-resumo"></p>
+
+                    <div class="box-descricao">
+                        <strong>Informações do produto:</strong>
+                        <p id="prod-descricao"></p>
                     </div>
 
                     <div class="campo">

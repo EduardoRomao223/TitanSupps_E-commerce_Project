@@ -1,43 +1,46 @@
-// 1. RECUPERA O SUPLEMENTO SELECIONADO NO LOCALSTORAGE
 const produtoTexto = localStorage.getItem("produtoSelecionado");
 let produtoAtual = JSON.parse(produtoTexto);
 
+
 if (!produtoAtual) {
     produtoAtual = {
-        id: 1,
-        nome: "100% Whey Protein Concentrado (900g)",
-        categoria: "Proteínas",
-        preco: 119.90,
-        imagem: "https://via.placeholder.com/350x350/1e1e1e/ffffff?text=Titan+Whey+900g",
-        sabores: ["Chocolate", "Baunilha", "Morango", "Cookies & Cream"],
-        descricao: "24g de proteína por dose, rico em BCAAs e glutamina. Ideal para recuperação e ganho de massa muscular pós-treino.",
-        modoUso: "Diluir 2 dosadores (30g) em 200ml de água gelada ou leite logo após o treino."
+        id: "whey-isolate",
+        name: "Whey Isolate Chocolate",
+        brand: "Protein Project",
+        category: "Proteínas",
+        size: "900 g",
+        price: 189.9,
+        oldPrice: 219.9,
+        tag: "Destaque",
+        shortDescription: "Proteína em pó sabor chocolate para complementar sua rotina alimentar.",
+        description: "Uma opção prática para incluir proteína na rotina. O produto de referência traz sabor chocolate e embalagem de 900 g. Confira sempre a embalagem e as informações do fabricante.",
+        image: "https://proteinproject.co/cdn/shop/files/WheyProteinIsolate_chocolate_2lb.png?v=1720122109",
+        imageAlt: "Embalagem de whey isolate sabor chocolate"
     };
 }
 
-document.querySelector("#prod-imagem").src = produtoAtual.imagem;
-document.querySelector("#prod-imagem").alt = produtoAtual.nome;
-document.querySelector("#prod-categoria").innerText = produtoAtual.categoria;
-document.querySelector("#prod-nome").innerText = produtoAtual.nome;
-document.querySelector("#prod-preco").innerText = "R$ " + produtoAtual.preco.toFixed(2).replace(".", ",");
-document.querySelector("#prod-descricao").innerText = produtoAtual.descricao;
-document.querySelector("#prod-uso").innerText = produtoAtual.modoUso;
 
-const selectSabor = document.querySelector("#select-sabor");
-const listaSabores = produtoAtual.sabores || ["Padrão"];
+document.querySelector("#prod-imagem").src = produtoAtual.image;
+document.querySelector("#prod-imagem").alt = produtoAtual.imageAlt || produtoAtual.name;
+document.querySelector("#prod-categoria").innerText = produtoAtual.category;
+document.querySelector("#prod-tag").innerText = produtoAtual.tag;
+document.querySelector("#prod-marca").innerText = produtoAtual.brand + " • " + produtoAtual.size;
+document.querySelector("#prod-nome").innerText = produtoAtual.name;
+document.querySelector("#prod-preco").innerText = "R$ " + produtoAtual.price.toFixed(2).replace(".", ",");
+document.querySelector("#prod-resumo").innerText = produtoAtual.shortDescription;
+document.querySelector("#prod-descricao").innerText = produtoAtual.description;
 
-listaSabores.forEach(function(sabor) {
-    const opcao = document.createElement("option");
-    opcao.value = sabor;
-    opcao.innerText = sabor;
-    selectSabor.appendChild(opcao);
-});
+
+if (produtoAtual.oldPrice) {
+    const elPrecoAntigo = document.querySelector("#prod-preco-antigo");
+    elPrecoAntigo.innerText = "De: R$ " + produtoAtual.oldPrice.toFixed(2).replace(".", ",");
+    elPrecoAntigo.classList.remove("oculto");
+}
 
 const btnAdicionar = document.querySelector("#btn-adicionar");
 
 btnAdicionar.addEventListener("click", function() {
     const quantidade = parseInt(document.querySelector("#prod-qtd").value);
-    const saborEscolhido = document.querySelector("#select-sabor").value;
 
     if (isNaN(quantidade) || quantidade < 1) {
         mostrarMensagem("Informe uma quantidade válida (mínimo 1).", "erro");
@@ -49,7 +52,7 @@ btnAdicionar.addEventListener("click", function() {
 
     let achou = false;
     for (let i = 0; i < carrinho.length; i++) {
-        if (carrinho[i].id === produtoAtual.id && carrinho[i].sabor === saborEscolhido) {
+        if (carrinho[i].id === produtoAtual.id) {
             carrinho[i].quantidade += quantidade;
             achou = true;
         }
@@ -58,17 +61,18 @@ btnAdicionar.addEventListener("click", function() {
     if (!achou) {
         carrinho.push({
             id: produtoAtual.id,
-            nome: produtoAtual.nome,
-            sabor: saborEscolhido,
-            preco: produtoAtual.preco,
-            imagem: produtoAtual.imagem,
+            name: produtoAtual.name,
+            brand: produtoAtual.brand,
+            size: produtoAtual.size,
+            price: produtoAtual.price,
+            image: produtoAtual.image,
             quantidade: quantidade
         });
     }
 
     localStorage.setItem("carrinho", JSON.stringify(carrinho));
 
-    mostrarMensagem("Adicionado ao carrinho: " + quantidade + "x " + produtoAtual.nome + " (" + saborEscolhido + ")", "sucesso");
+    mostrarMensagem("Adicionado ao carrinho: " + quantidade + "x " + produtoAtual.name, "sucesso");
     atualizarContador();
 });
 

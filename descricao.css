@@ -94,7 +94,7 @@ body {
 
 .produto-imagem-box {
     flex: 1;
-    background-color: var(--cinza-claro);
+    background-color: var(--branco);
     border-radius: 8px;
     padding: 20px;
     display: flex;
@@ -105,24 +105,46 @@ body {
 
 .produto-imagem-box img {
     max-width: 100%;
-    height: auto;
-    border-radius: 6px;
+    max-height: 360px;
+    object-fit: contain;
 }
 
 .produto-detalhes {
     flex: 1.2;
 }
 
+.tags-linha {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
 .tag-categoria {
-    display: inline-block;
     background-color: var(--preto);
     color: var(--branco);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: bold;
     padding: 4px 10px;
     border-radius: 4px;
     text-transform: uppercase;
-    margin-bottom: 10px;
+}
+
+.tag-destaque {
+    background-color: var(--vermelho);
+    color: var(--branco);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.texto-marca {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 4px;
 }
 
 .produto-detalhes h1 {
@@ -131,25 +153,36 @@ body {
     margin-bottom: 10px;
 }
 
+.bloco-precos {
+    margin-bottom: 15px;
+}
+
+.preco-antigo {
+    font-size: 1rem;
+    color: #888;
+    text-decoration: line-through;
+    display: block;
+}
+
 .preco-destaque {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 900;
     color: var(--vermelho);
-    margin-bottom: 15px;
 }
 
-.texto-descricao {
-    color: #444;
-    line-height: 1.5;
-    margin-bottom: 15px;
+.texto-resumo {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
 }
 
-.box-modo-uso {
+.box-descricao {
     background-color: var(--cinza-claro);
     border-left: 4px solid var(--vermelho);
     padding: 12px;
     margin-bottom: 1.5rem;
     font-size: 0.9rem;
+    line-height: 1.5;
     color: var(--preto);
 }
 
@@ -165,8 +198,7 @@ body {
     color: var(--preto);
 }
 
-.campo input,
-.campo select {
+.campo input {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -176,8 +208,7 @@ body {
     background-color: var(--branco);
 }
 
-.campo input:focus,
-.campo select:focus {
+.campo input:focus {
     border-color: var(--vermelho);
 }
 
