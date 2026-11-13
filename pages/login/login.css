@@ -22,65 +22,6 @@ body {
     flex-direction: column;
 }
 
-.navbar {
-    background-color: var(--cinza-escuro);
-    padding: 1rem 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    border-bottom: 3px solid var(--vermelho);
-}
-
-.logo {
-    color: var(--branco);
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-decoration: none;
-    letter-spacing: 1px;
-}
-
-.logo span {
-    color: var(--vermelho);
-}
-
-.logo {
-    color: var(--branco);
-    font-size: 1.6rem;
-    font-weight: 900;
-    text-decoration: none;
-    letter-spacing: 1px;
-}
-
-.logo span {
-    color: var(--vermelho);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    flex-wrap: wrap;
-}
-
-.nav-links a {
-    color: var(--branco);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding-bottom: 4px;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.ativo {
-    color: var(--vermelho);
-    border-bottom-color: var(--vermelho);
-}
-
-
 .container {
     flex: 1;
     display: flex;

@@ -10,9 +10,9 @@
 }
 
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #2b2b2b;
-    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f3f0;
+    color: #111;
     min-height: 100vh;
 }
 
@@ -63,7 +63,7 @@ h1 span {
 }
 
 h1 #contador {
-    color: #fff;
+    color: #111;
 }
 
 /* Lista de produtos e resumo do pedido */

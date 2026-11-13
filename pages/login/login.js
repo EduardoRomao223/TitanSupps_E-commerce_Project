@@ -11,6 +11,31 @@ const emailUsuarioLogado = document.getElementById('email-usuario-logado');
 const btnSair = document.getElementById('btn-sair');
 const btnExcluirConta = document.getElementById('btn-excluir-conta');
 const navUsuario = document.getElementById('nav-usuario');
+const cartCount = document.getElementById('cart-count');
+
+function atualizarContadorCarrinho() {
+    if (!cartCount) return;
+    try {
+        let salvo = localStorage.getItem('titansupps_carrinho');
+        if (salvo === null) {
+            const legado = JSON.parse(localStorage.getItem('carrinho') || '[]');
+            const convertidos = Array.isArray(legado) ? legado
+                .filter(item => item && typeof item.id === 'string' && Number(item.quantity ?? item.quantidade) > 0)
+                .map(item => ({ id: item.id, quantity: Math.floor(Number(item.quantity ?? item.quantidade)) })) : [];
+            if (convertidos.length) {
+                localStorage.setItem('titansupps_carrinho', JSON.stringify(convertidos));
+                localStorage.removeItem('carrinho');
+            }
+            salvo = JSON.stringify(convertidos);
+        }
+        const itens = JSON.parse(salvo);
+        cartCount.textContent = Array.isArray(itens)
+            ? itens.reduce((total, item) => total + Math.max(0, Number(item?.quantity) || 0), 0)
+            : 0;
+    } catch {
+        cartCount.textContent = '0';
+    }
+}
 
 
 function obterUsuarios() {
@@ -43,7 +68,7 @@ function verificarSessao() {
         areaFormularios.classList.remove('oculto');
         painelLogado.classList.add('oculto');
         
-        navUsuario.textContent = 'Login / Cadastro';
+        navUsuario.textContent = 'Entrar';
     }
 }
 
@@ -67,12 +92,12 @@ formCadastro.addEventListener('submit', (evento) => {
     evento.preventDefault(); 
 
     const nome = document.getElementById('cad-nome').value.trim();
-    const email = document.getElementById('cad-email').value.trim();
+    const email = document.getElementById('cad-email').value.trim().toLowerCase();
     const senha = document.getElementById('cad-senha').value;
 
     const usuarios = obterUsuarios();
 
-    const emailJaExiste = usuarios.some(u => u.email === email);
+    const emailJaExiste = usuarios.some(u => String(u.email || '').trim().toLowerCase() === email);
 
     if (emailJaExiste) {
         mostrarMensagem('Este e-mail já está cadastrado!', 'erro');
@@ -94,13 +119,13 @@ formCadastro.addEventListener('submit', (evento) => {
 formLogin.addEventListener('submit', (evento) => {
     evento.preventDefault();
 
-    const email = document.getElementById('login-email').value.trim();
+    const email = document.getElementById('login-email').value.trim().toLowerCase();
     const senha = document.getElementById('login-senha').value;
 
     const usuarios = obterUsuarios();
 
 
-    const usuarioEncontrado = usuarios.find(u => u.email === email && u.senha === senha);
+    const usuarioEncontrado = usuarios.find(u => String(u.email || '').trim().toLowerCase() === email && u.senha === senha);
 
     if (usuarioEncontrado) {
 
@@ -130,4 +155,10 @@ btnExcluirConta.addEventListener('click', () => {
     mostrarMensagem('Conta excluída permanentemente do LocalStorage.', 'erro');
 });
 
+window.addEventListener('storage', evento => {
+    if (evento.key === 'titansupps_carrinho') atualizarContadorCarrinho();
+    if (evento.key === 'usuario_logado') verificarSessao();
+});
+
+atualizarContadorCarrinho();
 verificarSessao();
