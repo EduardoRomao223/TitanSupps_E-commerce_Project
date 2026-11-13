@@ -5,31 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111111">
   <title>Carrinho — Titan Supps</title>
-  <link rel="stylesheet" href="/styles.css">
-  <script src="/script.js" defer></script>
+  <link rel="stylesheet" href="../../styles.css">
+  <script src="../../script.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <div class="wrap header-row">
-      <a class="brand" href="/index.html" aria-label="Titan Supps início"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a>
-      <nav class="nav-links" aria-label="Menu principal"><a href="/index.html">Início</a><a href="/index.html">Produtos</a><a href="/index.html">Sobre</a></nav>
-      <a class="header-cart active" href="/pages/carrinho/carrinho.html" aria-current="page">Carrinho <span id="cart-count">0</span></a>
-      <a class="login-link" href="/pages/login/login.html"><span id="account-label">Entrar</span></a>
+      <a class="brand" href="../../index.html" aria-label="Titan Supps início"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a>
+      <nav class="nav-links" aria-label="Menu principal"><a href="../../index.html#inicio">Início</a><a href="../../index.html#produtos">Produtos</a><a href="../descricao/descricao_prod.html">Descrição</a><a href="../sobre/sobre.html">Sobre</a></nav>
+      <a class="header-cart active" href="carrinho.html" aria-current="page">Carrinho <span id="cart-count">0</span></a>
+      <a class="login-link" href="../login/login.html"><span id="account-label">Entrar</span></a>
     </div>
   </header>
   <main class="cart-section cart-page">
     <div class="wrap cart-wrap">
       <div class="section-heading">
         <div><p class="kicker"><span></span> SEU PEDIDO</p><h1>Seu <em>carrinho.</em></h1><p>Os produtos adicionados ficam salvos neste navegador.</p></div>
-        <a class="clear-button" href="/index.html">Continuar comprando</a>
+        <a class="clear-button" href="../../index.html#produtos">Continuar comprando</a>
       </div>
+      <section id="purchase-result" class="purchase-result" aria-live="polite" hidden></section>
       <div class="cart-panel">
         <div class="cart-items" id="cart-items" aria-live="polite"><p class="empty-cart">Carregando carrinho...</p></div>
-        <aside class="cart-total"><span>Produtos</span><strong id="cart-quantity">0 itens</strong><span>Total demonstrativo</span><strong id="cart-total">R$ 0,00</strong><a class="button button-dark" href="/pages/login/login.html">Continuar <span>↗</span></a></aside>
+        <aside class="cart-total"><span>Produtos</span><strong id="cart-quantity">0 itens</strong><span>Total demonstrativo</span><strong id="cart-total">R$ 0,00</strong><button class="button button-dark checkout-button" id="checkout-button" type="button" disabled>Finalizar compra <span>↗</span></button></aside>
       </div>
     </div>
   </main>
-  <footer class="footer"><div class="wrap footer-row"><a class="brand" href="/index.html"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a><p>Projeto acadêmico • preços ilustrativos • imagens com links para as fontes</p><a href="/pages/login/login.html">Login / Cadastro</a></div></footer>
+  <footer class="footer"><div class="wrap footer-row"><a class="brand" href="../../index.html"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a><p>Projeto acadêmico • preços ilustrativos • imagens com links para as fontes</p><a href="../login/login.html">Entrar</a></div></footer>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

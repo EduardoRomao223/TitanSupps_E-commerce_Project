@@ -5,18 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso - Titan Suplementos</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
 
-    <header class="navbar">
-        <a href="index.html" class="logo">TITAN<span>SUPPS</span></a>
-        
-        <nav class="nav-links">
-            <a href="/index.html">Início</a>
-            <a href="/index.html">Produtos</a>
-            <a href="/pages/carrinho/carrinho.html">Carrinho</a>
-            <a href="/pages/login/login.html" id="nav-usuario" class="ativo">Login / Cadastro</a>
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a class="brand" href="../../index.html" aria-label="Titan Supps início"><span class="brand-mark">T</span><span>TITAN<span class="brand-red">SUPPS</span></span></a>
+        <nav class="nav-links" aria-label="Menu principal">
+          <a href="../../index.html#inicio">Início</a>
+          <a href="../../index.html#produtos">Produtos</a>
+          <a href="../descricao/descricao_prod.html">Descrição</a>
+          <a href="../sobre/sobre.html">Sobre</a>
         </nav>
+        <a class="header-cart" href="../carrinho/carrinho.html">Carrinho <span id="cart-count">0</span></a>
+        <a href="login.html" id="nav-usuario" class="login-link active" aria-current="page">Entrar</a>
+      </div>
     </header>
     <main class="container">
 
@@ -26,7 +30,7 @@
             <p class="info-email">E-mail: <strong id="email-usuario-logado"></strong></p>
             
             <div class="acoes-logado">
-                <a href="/index.html" class="btn btn-vermelho">Ir às Compras</a>
+                <a href="../../index.html#produtos" class="btn btn-vermelho">Ir às Compras</a>
                 <button id="btn-sair" class="btn btn-preto">Sair (Logout)</button>
                 <button id="btn-excluir-conta" class="btn btn-outline">Excluir Minha Conta</button>
             </div>

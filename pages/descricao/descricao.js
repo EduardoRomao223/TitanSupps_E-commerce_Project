@@ -1,5 +1,11 @@
-const produtoTexto = localStorage.getItem("produtoSelecionado");
-let produtoAtual = JSON.parse(produtoTexto);
+const CART_KEY = "titansupps_carrinho";
+const LEGACY_CART_KEY = "carrinho";
+let produtoAtual;
+try {
+    produtoAtual = JSON.parse(localStorage.getItem("produtoSelecionado") || "null");
+} catch {
+    produtoAtual = null;
+}
 
 
 if (!produtoAtual) {
@@ -47,30 +53,12 @@ btnAdicionar.addEventListener("click", function() {
         return;
     }
 
-    const carrinhoTexto = localStorage.getItem("carrinho");
-    let carrinho = carrinhoTexto ? JSON.parse(carrinhoTexto) : [];
+    const carrinho = lerCarrinho();
+    const itemExistente = carrinho.find(item => item.id === produtoAtual.id);
+    if (itemExistente) itemExistente.quantity += quantidade;
+    else carrinho.push({ id: produtoAtual.id, quantity: quantidade });
 
-    let achou = false;
-    for (let i = 0; i < carrinho.length; i++) {
-        if (carrinho[i].id === produtoAtual.id) {
-            carrinho[i].quantidade += quantidade;
-            achou = true;
-        }
-    }
-
-    if (!achou) {
-        carrinho.push({
-            id: produtoAtual.id,
-            name: produtoAtual.name,
-            brand: produtoAtual.brand,
-            size: produtoAtual.size,
-            price: produtoAtual.price,
-            image: produtoAtual.image,
-            quantidade: quantidade
-        });
-    }
-
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    localStorage.setItem(CART_KEY, JSON.stringify(carrinho));
 
     mostrarMensagem("Adicionado ao carrinho: " + quantidade + "x " + produtoAtual.name, "sucesso");
     atualizarContador();
@@ -84,14 +72,50 @@ function mostrarMensagem(texto, tipo) {
 }
 
 function atualizarContador() {
-    const carrinhoTexto = localStorage.getItem("carrinho");
-    const carrinho = carrinhoTexto ? JSON.parse(carrinhoTexto) : [];
-
-    const total = carrinho.reduce(function(acumulador, item) {
-        return acumulador + item.quantidade;
-    }, 0);
-
-    document.querySelector("#contador-carrinho").innerText = total;
+    const contador = document.querySelector("#cart-count");
+    if (!contador) return;
+    const total = lerCarrinho().reduce((acumulador, item) => acumulador + item.quantity, 0);
+    contador.innerText = total;
 }
 
+function lerCarrinho() {
+    try {
+        const salvo = localStorage.getItem(CART_KEY);
+        const itensAtuais = salvo === null ? [] : JSON.parse(salvo);
+        const legadoSalvo = localStorage.getItem(LEGACY_CART_KEY);
+        if (legadoSalvo !== null) {
+            const legado = JSON.parse(legadoSalvo);
+            const itensLegados = Array.isArray(legado) ? legado : [];
+            const convertido = [...(Array.isArray(itensAtuais) ? itensAtuais : []), ...itensLegados]
+                .filter(item => item && typeof item.id === "string" && Number(item.quantity ?? item.quantidade) > 0)
+                .map(item => ({ id: item.id, quantity: Math.floor(Number(item.quantity ?? item.quantidade)) }));
+            localStorage.setItem(CART_KEY, JSON.stringify(convertido));
+            localStorage.removeItem(LEGACY_CART_KEY);
+            return convertido;
+        }
+        return Array.isArray(itensAtuais) ? itensAtuais
+            .filter(item => item && typeof item.id === "string" && Number(item.quantity) > 0)
+            .map(item => ({ id: item.id, quantity: Math.floor(Number(item.quantity)) })) : [];
+    } catch {
+        return [];
+    }
+}
+
+function atualizarUsuarioNav() {
+    const navUsuario = document.querySelector("#nav-usuario");
+    if (!navUsuario) return;
+    try {
+        const usuario = JSON.parse(localStorage.getItem("usuario_logado") || "null");
+        navUsuario.textContent = usuario?.nome ? "Olá, " + usuario.nome.trim().split(/\s+/)[0] : "Entrar";
+    } catch {
+        navUsuario.textContent = "Entrar";
+    }
+}
+
+window.addEventListener("storage", evento => {
+    if (evento.key === CART_KEY || evento.key === LEGACY_CART_KEY) atualizarContador();
+    if (evento.key === "usuario_logado") atualizarUsuarioNav();
+});
+
 atualizarContador();
+atualizarUsuarioNav();
